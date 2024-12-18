@@ -1,0 +1,106 @@
+const columns = [
+    {
+      title: "Lead Name",
+      dataIndex: "LeadName",
+      render: (text) => (
+        <Link to="/leads-details" className="company-img">
+          {text}
+        </Link>
+      ),
+      sorter: (a, b) => a.LeadName.length - b.LeadName.length,
+    },
+    {
+      title: "Source",
+      dataIndex: "SourceName",
+      render: (text, record) => (
+        <span className="table-avatar d-flex align-items-center">
+          <Link to="/company-details">{text}</Link>
+          <span>{record.role}</span>
+        </span>
+      ),
+      sorter: (a, b) => a.SourceName.length - b.SourceName.length,
+    },
+    {
+      title: "Medium",
+      dataIndex: "Phone",
+      sorter: (a, b) => a.Phone.length - b.Phone.length,
+    },
+
+    {
+      title: "Division Lead",
+      dataIndex: "Email",
+      sorter: (a, b) => a.Email.length - b.Email.length,
+    },
+
+    {
+      title: "Lead Status",
+      dataIndex: "LeadStatus",
+      render: (text) => (
+        <div>
+          {text === "Closed" && (
+            <span className="badge badge-soft-success">{text}</span>
+          )}
+          {text === "Not Contacted" && (
+            <span className="badge badge-soft-info">{text}</span>
+          )}
+          {text === "Contacted" && (
+            <span className="badge badge-soft-warning">{text}</span>
+          )}
+          {text === "Lost" && (
+            <span className="badge badge-soft-danger">{text}</span>
+          )}
+        </div>
+      ),
+      sorter: (a, b) => a.LeadStatus.length - b.LeadStatus.length,
+    },
+
+    {
+      title: "Created Date",
+      dataIndex: "CreatedData",
+      sorter: (a, b) => a.CreatedData.length - b.CreatedData.length,
+    },
+    {
+      title: "Lead Owner",
+      dataIndex: "LeadOwner",
+      sorter: (a, b) => a.LeadOwner.length - b.LeadOwner.length,
+    },
+
+    {
+      title: "Action",
+
+      render: () => (
+        <div className="dropdown dropdown-action text-end">
+          <Link
+            to="#"
+            className="action-icon dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i className="material-icons">more_vert</i>
+          </Link>
+          <div className="dropdown-menu dropdown-menu-right">
+            <Link
+              className="dropdown-item"
+              to="#"
+              data-bs-toggle="modal"
+              data-bs-target="#edit_leads"
+            >
+              <i className="fa fa-pencil m-r-5" /> Edit
+            </Link>
+            <Link
+              className="dropdown-item"
+              to="#"
+              data-bs-toggle="modal"
+              data-bs-target="#delete_leads"
+            >
+              <i className="fa fa-trash m-r-5" /> Delete
+            </Link>
+            <Link class="dropdown-item" to="/contact-details">
+              <i class="fa-regular fa-eye"></i> Preview
+            </Link>
+          </div>
+        </div>
+      ),
+      sorter: (a, b) => a.length - b.length,
+    },
+  ];
